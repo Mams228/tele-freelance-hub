@@ -14,7 +14,122 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          contact_info: string
+          created_at: string
+          customer_name: string
+          deadline: string
+          id: string
+          notes: string | null
+          service_id: string
+          status: string | null
+          telegram_user_id: string
+          updated_at: string
+          work_link: string | null
+          work_notes: string | null
+        }
+        Insert: {
+          contact_info: string
+          created_at?: string
+          customer_name: string
+          deadline: string
+          id?: string
+          notes?: string | null
+          service_id: string
+          status?: string | null
+          telegram_user_id: string
+          updated_at?: string
+          work_link?: string | null
+          work_notes?: string | null
+        }
+        Update: {
+          contact_info?: string
+          created_at?: string
+          customer_name?: string
+          deadline?: string
+          id?: string
+          notes?: string | null
+          service_id?: string
+          status?: string | null
+          telegram_user_id?: string
+          updated_at?: string
+          work_link?: string | null
+          work_notes?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          role: string | null
+          telegram_user_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          role?: string | null
+          telegram_user_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          role?: string | null
+          telegram_user_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          icon_name: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          price_from: number
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          icon_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          price_from: number
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          icon_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          price_from?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
